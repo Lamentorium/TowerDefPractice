@@ -11,10 +11,12 @@ namespace EnemiesSystem.Data
         public float Speed => speed;
         [SerializeField] private int damage;
         public int Damage => damage;
-        /*[SerializeField] private int health;
+        [SerializeField] private int health;
         public int Health => health;
-        [SerializeField] private int armor;
-        public int Armor => armor;*/
+        [SerializeField] private int magicArmor;
+        public int MagicArmor => magicArmor;
+        [SerializeField] private int physicArmor;
+        public int PhysicArmor => physicArmor;
         
     }
 }

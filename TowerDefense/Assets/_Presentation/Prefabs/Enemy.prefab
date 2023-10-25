@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4018913879094289130}
   - component: {fileID: 4018913879094289129}
   - component: {fileID: 4018913879094289128}
-  - component: {fileID: -7241705796730239162}
   - component: {fileID: -4459679907254691312}
   - component: {fileID: 6547811623259215160}
   m_Layer: 0
@@ -102,18 +101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Health>k__BackingField: 100
   <Armor>k__BackingField: 50
---- !u!114 &-7241705796730239162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4018913879094289135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9c7723ebda9d2d4ba848f9345b70022, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &-4459679907254691312
 Rigidbody2D:
   serializedVersion: 4

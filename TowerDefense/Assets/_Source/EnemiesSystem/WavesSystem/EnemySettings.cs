@@ -20,14 +20,5 @@ namespace EnemiesSystem.WavesSystem
         [SerializeField] private int armor;
         
 
-        private Enemy _enemy;
-
-        public void Construct(Enemy enemy)
-        { 
-            _enemy = enemy;
-            health = _enemy.Health;
-            armor = _enemy.Armor;
-        }
-
     }
 }

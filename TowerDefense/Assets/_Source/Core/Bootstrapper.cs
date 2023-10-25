@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using EnemiesSystem.WavesSystem;
 using UnityEngine;
 
-public class Bootstrapper : MonoBehaviour
+namespace Core
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Bootstrapper : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField] private WavesSpawner wavesSpawner;
+        private void Awake()
+        {
+            wavesSpawner.Construct();
+        }
     }
 }

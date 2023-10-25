@@ -11,33 +11,22 @@ namespace EnemiesSystem.WavesSystem
         [SerializeField] private Waves[] waves;
         [SerializeField] private UnitsPool enemyPool;
         [SerializeField] private float delayBetweenWaves;
-        private List<GameObject> activeEnemies;
+        private List<GameObject> _activeEnemies;
         private int _enemiesCount;
 
         public static int EnemiesInWave { get; set; }
         private int _currentWaveIndex;
+        
 
-
-        private void Start()
+        public void Construct()
         {
-            activeEnemies = new List<GameObject>();
+            _activeEnemies = new List<GameObject>();
             _enemiesCount = waves[_currentWaveIndex].EnemySettings.Length;
-            enemyPool.Construct(waves);
             Init();
-            LaunchNextWave();
-            
+            StartCoroutine(EnemiesSpawn());
         }
 
-        /*private void OnEnable()
-        {
-            TestWaveSystem.Action += ChangeValue;
-        }
-
-        private void OnDisable()
-        {
-            TestWaveSystem.Action -= ChangeValue;
-        }*/
-
+       
         private void Init()
         {
             enemyPool.InitPool();
@@ -45,33 +34,39 @@ namespace EnemiesSystem.WavesSystem
 
         private void Update()
         {
-            
 
-            if (activeEnemies.Count(enemy => enemy.activeSelf == false) == EnemiesInWave
-                && activeEnemies.Count(enemy => enemy.activeSelf == false) != 0)
+
+            StartCoroutine(LaunchNextWave());
+
+        }
+
+        private IEnumerator LaunchNextWave()
+        {
+            if (_activeEnemies!= null && _activeEnemies.Count(enemy => enemy.activeSelf == false) == EnemiesInWave
+                                     && _activeEnemies.Count(enemy => enemy.activeSelf == false) != 0)
             {
-                foreach (var enemy in activeEnemies)
+                foreach (var enemy in _activeEnemies)
                 {
                     enemyPool.ReturnToPool(enemy);
                     
                 }
-
-                activeEnemies = null;
-                _enemiesCount = waves[_currentWaveIndex].EnemySettings.Length;
-                Debug.Log("next");
-                EnemiesInWave = 0;
-                LaunchNextWave();
+                if (_currentWaveIndex < waves.Length )
+                {
+                    _activeEnemies = null;
+                    _enemiesCount = waves[_currentWaveIndex].EnemySettings.Length;
+                    Debug.Log("next");
+                    yield return new WaitForSeconds(delayBetweenWaves);
+                    EnemiesInWave = 0;
+                    StartCoroutine(EnemiesSpawn());
+                    
+                }
             }
             
         }
-
-        private void LaunchNextWave()
-        {
-            StartCoroutine(EnemiesSpawn());
-        }
         private IEnumerator EnemiesSpawn()
         {
-            activeEnemies = new List<GameObject>();
+            
+            _activeEnemies = new List<GameObject>();
                 for (int i = 0; i < _enemiesCount; i++)
                 {
                     yield return new WaitForSeconds(waves[_currentWaveIndex]
@@ -82,7 +77,7 @@ namespace EnemiesSystem.WavesSystem
                     enemy.Init(waves[_currentWaveIndex].EnemySettings[i].EnemyData);
                     enemy.transform.position = waves[_currentWaveIndex].EnemySettings[i].SpawnPoint.transform.position;
                     EnemiesInWave++;
-                    activeEnemies.Add(enemyInstance);
+                    _activeEnemies.Add(enemyInstance);
                     Debug.Log(EnemiesInWave);
                 }
 
@@ -90,17 +85,6 @@ namespace EnemiesSystem.WavesSystem
 
 
         }
-
-        /*private void ChangeValue(int val)
-        {
-            EnemiesInWave += val;
-            Debug.Log(EnemiesInWave);
-            if (EnemiesInWave == 0 && _currentWaveIndex < waves.Length - 1)
-            {
-                _currentWaveIndex++;
-                LaunchNextWave();
-            }
-        }*/
         
             
         
