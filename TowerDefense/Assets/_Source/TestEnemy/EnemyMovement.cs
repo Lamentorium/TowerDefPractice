@@ -9,6 +9,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [Header("Attributes")]
     [SerializeField] private float moveSpeed = 2f;
+    [SerializeField] private GameObject _base;
 
     private Transform target;
     private int pathIndex = 0;
@@ -24,6 +25,8 @@ public class EnemyMovement : MonoBehaviour
             
             if (pathIndex == LevelManager.main.path.Length)
             {
+                Base baseScript = _base.GetComponent<Base>();
+                baseScript.OnEnemyArrival();
                 Destroy(gameObject);
                 return;
             }
