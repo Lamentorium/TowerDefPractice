@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using EnemiesSystem.Data;
 using UnityEngine;
 
@@ -7,8 +8,8 @@ namespace EnemiesSystem.WavesSystem
     [Serializable]
     public class EnemySettings
     {
-        [SerializeField] private GameObject enemyPrefab;
-        public GameObject EnemyPrefab => enemyPrefab;
+        [SerializeField] private EnemyDataSO enemyData;
+        public EnemyDataSO EnemyData => enemyData;
         [SerializeField] private GameObject spawnPoint;
         public GameObject SpawnPoint => spawnPoint;
         [SerializeField] private float spawnDelay;

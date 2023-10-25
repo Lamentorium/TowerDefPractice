@@ -1,3 +1,5 @@
+using System;
+using EnemiesSystem.WavesSystem;
 using UnityEngine;
 
 namespace EnemiesSystem.Data
@@ -17,6 +19,11 @@ namespace EnemiesSystem.Data
                 enemySprite.sprite = _enemyData.Sprite;
 
         }
-    
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            WavesSpawner.EnemiesInWave--;
+            Debug.Log(WavesSpawner.EnemiesInWave);
+        }
     }
 }
