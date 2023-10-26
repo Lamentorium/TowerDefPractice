@@ -16,9 +16,9 @@ namespace EnemiesSystem.WavesSystem
         [SerializeField] private float delayBetweenWaves;
         private List<GameObject> _activeEnemies;
         private int _enemiesCount;
-
         public static int EnemiesInWave { get; set; }
         private int _currentWaveIndex;
+        
         
 
         public void Construct()
@@ -33,6 +33,7 @@ namespace EnemiesSystem.WavesSystem
         private void Init()
         {
             enemyPool.InitPool();
+            
         }
 
         private void Update()

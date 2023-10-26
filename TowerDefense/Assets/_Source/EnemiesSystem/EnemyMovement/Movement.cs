@@ -11,29 +11,31 @@ namespace EnemiesSystem.EnemyMovement
     {
         [SerializeField] private Transform[] points;
         private Enemy _enemy;
-        private Rigidbody2D rb;
+        private Sequence _mySequence;
 
         private int _point = 0;
-        // Start is called before the first frame update
-        void Start()
+    
+
+        private void OnDisable()
         {
-            /*TryGetComponent(out Enemy enemy);
-            _enemy = enemy;*/
+            _point = 0;
+           
             
-            
+
         }
 
-        
-
-       
 
         public void Move(Enemy enemy)
         {
-           
-            if (_point < points.Length)
+
+
+            if (_point < points.Length && gameObject.activeSelf == true) 
             {
-                transform.DOMove(points[_point].position, enemy.Speed).SetEase(Ease.InOutSine).OnComplete((() => Move(enemy)));
-                _point++;
+                _mySequence.Append(transform.DOMove(points[_point].position, enemy.Speed)
+                    .SetEase(Ease.InOutSine)
+                    .Play()
+                    .OnComplete(() => Move(enemy)));
+              _point++;
                   
 
             }
