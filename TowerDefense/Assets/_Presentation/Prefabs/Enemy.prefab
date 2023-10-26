@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: -4459679907254691312}
   - component: {fileID: 6547811623259215160}
   - component: {fileID: 5108687333740741852}
-  - component: {fileID: -8739660202102976246}
+  - component: {fileID: 6908826298911457620}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -159,7 +159,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4018913879094289135}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08, y: -3.19, z: 0}
+  m_LocalPosition: {x: -1.46, y: -4.2, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -231,7 +231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4b4a1602cd9ba4cb7340f0e1013bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 363575777915756325, guid: 4dea136f161ec2f44a0b9bd8058137ba, type: 3}
 --- !u!50 &-4459679907254691312
 Rigidbody2D:
   serializedVersion: 4
@@ -293,28 +292,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarImage: {fileID: 5044543702287331209}
   healthBar: {fileID: 3626196594937601731}
---- !u!195 &-8739660202102976246
-NavMeshAgent:
+--- !u!114 &6908826298911457620
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4018913879094289135}
   m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e02696b274771b48bdb1591b8ff214a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points:
+  - {fileID: 1795938981744964888, guid: 35cfad7d284a4eb409ba55f6b8970684, type: 3}
+  - {fileID: 3524991093785682204, guid: 21ef2b506d8b46144add8d769da1b33b, type: 3}
+  - {fileID: 1150787863422336706, guid: 2cb6b68fe0f59044e9cef52afc540063, type: 3}
+  - {fileID: 8904908798221634207, guid: 1ae9d8d246ded49438d8f12178f53ed9, type: 3}
 --- !u!1 &6871361721631323386
 GameObject:
   m_ObjectHideFlags: 0

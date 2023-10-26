@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
+using EnemiesSystem.EnemyMovement;
+using UnityEditor;
 using UnityEngine;
 
 namespace EnemiesSystem.WavesSystem
@@ -75,8 +78,11 @@ namespace EnemiesSystem.WavesSystem
                     enemyPool.TryGetFromPool(out GameObject enemyInstance);
                     var enemy = enemyPool.Enemies[enemyInstance];
                     enemy.Init(waves[_currentWaveIndex].EnemySettings[i].EnemyData);
-                    enemy.transform.position = waves[_currentWaveIndex].EnemySettings[i].SpawnPoint.transform.position;
+                    enemyInstance.transform.position = waves[_currentWaveIndex].EnemySettings[i].SpawnPoint.transform.position;
+                    enemyInstance.TryGetComponent(out Movement movement);
+                    movement.Move(enemy);
                     EnemiesInWave++;
+                    
                     _activeEnemies.Add(enemyInstance);
                     Debug.Log(EnemiesInWave);
                 }
