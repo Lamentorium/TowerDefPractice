@@ -82,11 +82,7 @@ namespace EnemiesSystem.WavesSystem
                 }
 
                 _currentWaveIndex++;
-
-
-        }
-        
             
-        
+        }
     }
 }

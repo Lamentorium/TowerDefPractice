@@ -28,8 +28,11 @@ namespace EnemiesSystem
             {
                 
                 GameObject enemyInstance = GameObject.Instantiate(enemyPrefab, parent.transform);
-                if(enemyInstance.TryGetComponent(out Enemy enemyScript))
+                if (enemyInstance.TryGetComponent(out Enemy enemyScript))
+                {
+                    
                     Enemies.Add(enemyInstance, enemyScript );
+                }
                 ReturnToPool(enemyInstance);
             }
         }

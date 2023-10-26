@@ -14,11 +14,6 @@ namespace EnemiesSystem.WavesSystem
         public GameObject SpawnPoint => spawnPoint;
         [SerializeField] private float spawnDelay;
         public float SpawnDelay => spawnDelay;
-        [SerializeField] private int health;
         
-
-        [SerializeField] private int armor;
-        
-
     }
 }
