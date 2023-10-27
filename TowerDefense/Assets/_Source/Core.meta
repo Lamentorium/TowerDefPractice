@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 262d1413d8be184418beea43d45c14d4
+=======
+guid: e4926b69930d73f42bc0bcf25e569747
+>>>>>>> origin/feat/enemies
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
