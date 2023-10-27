@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using EconomySystem;
+using EnemiesSystem.WavesSystem;
+using TMPro;
 using UnityEngine;
 
-public class Bootstrapper : MonoBehaviour
+namespace Core
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Bootstrapper : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField] private WavesSpawner wavesSpawner;
+        [SerializeField] private GoldView goldView;
+        [SerializeField] private TMP_Text goldText;
+        private void Awake()
+        {
+            wavesSpawner.Construct();
+            goldView.Construct(goldText);
+        }
     }
 }

@@ -15,19 +15,9 @@ namespace EnemiesSystem
         [SerializeField] private GameObject enemyPrefab;
         [SerializeField] private GameObject parent;
         //public List<EnemySettings> EnemySettings => enemySettings;
-        public Dictionary<GameObject, Enemy> Enemies;
-        private Waves[] _waves; 
-
-
-
+        public Dictionary<GameObject, Enemy> Enemies { get; private set; }
         private Queue<GameObject> _enemies;
-
-        public void Construct(Waves[] waves)
-        {
-            _waves = waves;
-            
-        }
-
+        
         public void InitPool()
         {
            
@@ -36,11 +26,13 @@ namespace EnemiesSystem
             Enemies = new Dictionary<GameObject, Enemy>();
             for (int i = 0; i < MaximumWavePoolSize; i++)
             {
-
-               
+                
                 GameObject enemyInstance = GameObject.Instantiate(enemyPrefab, parent.transform);
-                if(enemyInstance.TryGetComponent(out Enemy enemyScript))
+                if (enemyInstance.TryGetComponent(out Enemy enemyScript))
+                {
+                    
                     Enemies.Add(enemyInstance, enemyScript );
+                }
                 ReturnToPool(enemyInstance);
             }
         }
