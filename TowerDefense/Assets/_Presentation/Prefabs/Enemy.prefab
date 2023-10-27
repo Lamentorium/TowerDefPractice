@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2001397973961769333}
   - component: {fileID: 5044543702287331209}
   - component: {fileID: 8022635586221515698}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HealthBarInner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 6547811623259215160}
   - component: {fileID: 5108687333740741852}
   - component: {fileID: 6908826298911457620}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,9 +239,9 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4018913879094289135}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 3626196594937601731}
   - component: {fileID: 2259859404196359254}
   - component: {fileID: 86043389793483874}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 2621736464850322642}
   - component: {fileID: 8092041541005361738}
   - component: {fileID: 4700406622720892682}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

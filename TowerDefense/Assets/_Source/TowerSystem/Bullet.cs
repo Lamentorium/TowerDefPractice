@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using EnemiesSystem.Data;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -9,6 +10,7 @@ public class Bullet : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float bulletSpeed = 5f;
+    [SerializeField] private  int dmg = 20;
 
     private Transform target;
 
@@ -28,7 +30,12 @@ public class Bullet : MonoBehaviour
     }
     private void  OnCollisionEnter2D(Collision2D other)
     {
-        
+        Enemy enemy = other.collider.GetComponent<Enemy>();
+        Debug.Log("dmg sent");
+        if (enemy != null)
+        {  
+            enemy.DamgeRecieved(dmg);
+        }
         Destroy(gameObject);
     }
 }

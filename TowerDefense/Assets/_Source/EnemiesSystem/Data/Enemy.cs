@@ -29,9 +29,10 @@ namespace EnemiesSystem.Data
             Speed = enemyData.Speed;
         }
 
-         private void OnTriggerEnter2D(Collider2D col)
+         public void DamgeRecieved(int dmg)
          {
-             Health -= 20;
+            Debug.Log("dmg taken");
+             Health -= dmg;
              TakeDamage?.Invoke();
              if (Health <= 0)
              {
