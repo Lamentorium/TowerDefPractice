@@ -16,6 +16,11 @@ public class Tower : MonoBehaviour
     [SerializeField] private float attackRange = 5f;
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float fireRate = 1f;
+    [SerializeField] private float Damage = 5f;
+    [SerializeField] private bool isMagic = false;
+    
+
+
 
 
 
@@ -48,9 +53,11 @@ public class Tower : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject bulletObj = Instantiate(bulletPrefab,firingPoint.position,Quaternion.identity);
+        GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         Bullet bulletScript = bulletObj.GetComponent<Bullet>();
         bulletScript.SetTarget(target);
+        bulletScript.isMagic = isMagic;
+        bulletScript.dmg = Damage;
     }
 
     private void FindTarget()
