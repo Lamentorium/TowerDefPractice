@@ -16,7 +16,7 @@ public class AOETower : MonoBehaviour
     [SerializeField] private float attackRange = 5f;
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float fireRate = 1f;
-    [SerializeField] private float Damage = 5f;
+    [SerializeField] private float damage = 5f;
     [SerializeField] private bool isMagic = false;
 
 
@@ -56,7 +56,7 @@ public class AOETower : MonoBehaviour
         AOEBullet bulletScript = bulletObj.GetComponent<AOEBullet>();
         bulletScript.SetTarget(target);
         bulletScript.isMagic = isMagic;
-        bulletScript.dmg = Damage;
+        bulletScript.dmg = damage;
     }
 
     private void FindTarget()

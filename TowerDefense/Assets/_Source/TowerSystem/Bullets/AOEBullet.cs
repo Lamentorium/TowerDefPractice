@@ -35,9 +35,9 @@ public class AOEBullet : MonoBehaviour
         {
             if (enemy != null)
             {
-                var hitColliders = Physics2D.OverlapCircleAll(transform.position, aoeRange, 1 << LayerMask.NameToLayer("Enemy"));
+                var enemies = Physics2D.OverlapCircleAll(transform.position, aoeRange, 1 << LayerMask.NameToLayer("Enemy"));
                 Debug.Log("aoe dmg sent");
-                foreach (var item in hitColliders)
+                foreach (var item in enemies)
                 {
                     Debug.Log(123);
                     item.transform.GetComponent<EnemyMovement>().DamgeRecieved(dmg, isMagic);

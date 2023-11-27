@@ -16,7 +16,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private float attackRange = 5f;
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float fireRate = 1f;
-    [SerializeField] private float Damage = 5f;
+    [SerializeField] private float damage = 5f;
     [SerializeField] private bool isMagic = false;
     
 
@@ -57,7 +57,7 @@ public class Tower : MonoBehaviour
         Bullet bulletScript = bulletObj.GetComponent<Bullet>();
         bulletScript.SetTarget(target);
         bulletScript.isMagic = isMagic;
-        bulletScript.dmg = Damage;
+        bulletScript.dmg = damage;
     }
 
     private void FindTarget()

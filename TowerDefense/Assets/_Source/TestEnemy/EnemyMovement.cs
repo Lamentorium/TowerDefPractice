@@ -9,6 +9,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject point1;
     [SerializeField] private GameObject point2;
+    [SerializeField] private SpriteRenderer sprite;
     [Header("Attributes")]
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float Health = 100f;
@@ -16,9 +17,11 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float PhRes = 0f;
 
     private Transform target;
-   
+    private float baseSpeed;
+
     private void Start()
     {
+        baseSpeed = moveSpeed;
         target = point1.transform;
     }
     private void Update()
@@ -41,24 +44,35 @@ public class EnemyMovement : MonoBehaviour
         Vector2 direction = (target.position - transform.position).normalized;
         rb.velocity = direction * moveSpeed;
     }
-     public void DamgeRecieved(float dmg,bool isMagic)
-         {
-            Debug.Log("dmg taken");
-            if (isMagic == true)
-            {
-                Debug.Log("Magic resisted");
-                Health -= dmg * MRes;
-            }
-            else
-            {
-                Debug.Log("Physical resisted");
-                Health -= dmg * PhRes;
-            }
-             
-             if (Health <= 0)
-             {
-                 gameObject.SetActive(false);
-             }
-             
-         }
+    public void Slowed(float slow,float slowtime)
+    {
+        moveSpeed = moveSpeed * slow;
+        sprite.color = Color.blue;
+        StartCoroutine(ResetSpeed(slowtime));
+    }
+    private IEnumerator ResetSpeed(float slowtime){
+        yield return new WaitForSeconds(slowtime);
+        moveSpeed = baseSpeed;
+        sprite.color = Color.white;
+    }
+    public void DamgeRecieved(float dmg, bool isMagic)
+    {
+        Debug.Log("dmg taken");
+        if (isMagic == true)
+        {
+            Debug.Log("Magic resisted");
+            Health -= dmg * MRes;
+        }
+        else
+        {
+            Debug.Log("Physical resisted");
+            Health -= dmg * PhRes;
+        }
+
+        if (Health <= 0)
+        {
+            gameObject.SetActive(false);
+        }
+
+    }
 }
