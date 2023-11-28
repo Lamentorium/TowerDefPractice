@@ -17,6 +17,7 @@ namespace EnemiesSystem.Data
         public float MagicArmor => magicArmor;
         [SerializeField] private float physicArmor;
         public float PhysicArmor => physicArmor;
-        
+        [SerializeField] private float gold;
+        public float Gold => gold;
     }
 }

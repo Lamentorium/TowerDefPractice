@@ -1,15 +1,13 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace EconomySystem
 {
     public class GoldView : MonoBehaviour
     {
-        private TMP_Text _text;
-        public void Construct(TMP_Text text)
-        {
-            _text = text;
-        }
+        [SerializeField] private TMP_Text text;
+        
         private void OnEnable()
         {
             Gold.AddAction += UpdateTextView;
@@ -22,7 +20,7 @@ namespace EconomySystem
 
         private void UpdateTextView(float gold)
         {
-            _text.text = "Gold: " + gold;
+            text.text = "Gold: " + gold;
         }
     }
 }

@@ -10,9 +10,9 @@ namespace EconomySystem
       
    
 
-        public static void AddGold()
+        public static void AddGold(float newGold)
         {
-            GoldCount++;
+            GoldCount+=newGold;
             AddAction?.Invoke(GoldCount);
         }
     }

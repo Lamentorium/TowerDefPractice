@@ -18,3 +18,4 @@ MonoBehaviour:
   health: 100
   magicArmor: 100
   physicArmor: 50
+  gold: 5
