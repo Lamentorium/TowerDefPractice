@@ -39,23 +39,23 @@ namespace EnemiesSystem.WavesSystem
         private void Update()
         {
 
+            if (_activeEnemies != null && _activeEnemies.Count(enemy => enemy.activeSelf == false) == EnemiesInWave
+                                       && _activeEnemies.Count(enemy => enemy.activeSelf == false) != 0)
+            {
+                StartCoroutine(LaunchNextWave());
+            }
 
-            StartCoroutine(LaunchNextWave());
 
         }
 
         private IEnumerator LaunchNextWave()
         {
-            if (_activeEnemies!= null && _activeEnemies.Count(enemy => enemy.activeSelf == false) == EnemiesInWave
-                                     && _activeEnemies.Count(enemy => enemy.activeSelf == false) != 0)
-            {
-                foreach (var enemy in _activeEnemies)
-                {
-                    enemyPool.ReturnToPool(enemy);
+            foreach (var enemy in _activeEnemies)
+            { enemyPool.ReturnToPool(enemy);
                     
-                }
-                if (_currentWaveIndex < waves.Length )
-                {
+            }
+            if (_currentWaveIndex < waves.Length )
+            {
                     _activeEnemies = null;
                     _enemiesCount = waves[_currentWaveIndex].EnemySettings.Length;
                     Debug.Log("next");
@@ -63,9 +63,8 @@ namespace EnemiesSystem.WavesSystem
                     EnemiesInWave = 0;
                     StartCoroutine(EnemiesSpawn());
                     
-                }
             }
-            
+                
         }
         private IEnumerator EnemiesSpawn()
         {
@@ -80,8 +79,8 @@ namespace EnemiesSystem.WavesSystem
                     var enemy = enemyPool.Enemies[enemyInstance];
                     enemy.Init(waves[_currentWaveIndex].EnemySettings[i].EnemyData);
                     enemyInstance.transform.position = waves[_currentWaveIndex].EnemySettings[i].SpawnPoint.transform.position;
-                    enemyInstance.TryGetComponent(out Movement movement);
-                    movement.Move(enemy);
+                    var enemyMove = new Movement(waves[_currentWaveIndex].EnemySettings[i].DestinationPoints);
+                    enemyMove.Move(enemy);
                     EnemiesInWave++;
                     
                     _activeEnemies.Add(enemyInstance);

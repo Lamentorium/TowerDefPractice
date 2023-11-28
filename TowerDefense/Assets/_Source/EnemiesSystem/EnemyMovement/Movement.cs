@@ -2,41 +2,37 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using EnemiesSystem.Data;
+using TMPro;
 using UnityEngine;
 
 namespace EnemiesSystem.EnemyMovement
 {
-    [RequireComponent(typeof(Enemy))]
-    public class Movement : MonoBehaviour
+    
+    public class Movement
     {
-        [SerializeField] private Transform[] points;
+         private Transform[] _points;
         private Enemy _enemy;
         private Sequence _mySequence;
+        private int _point;
 
-        private int _point = 0;
-    
-
-        private void OnDisable()
+        public Movement(Transform[] points)
         {
+            _points = points;
             _point = 0;
-           
-            
-
         }
-
-
         public void Move(Enemy enemy)
         {
 
 
-            if (_point < points.Length && gameObject.activeSelf == true) 
+            if (_point < _points.Length && enemy.gameObject.activeSelf) 
             {
-                _mySequence.Append(transform.DOMove(points[_point].position, enemy.Speed)
+                Debug.Log("Move");
+                _mySequence.Append(enemy.transform.DOMove(_points[_point].position, enemy.Speed)
                     .SetEase(Ease.InOutSine)
                     .Play()
                     .OnComplete(() => Move(enemy)));
               _point++;
-                  
+              
 
             }
 

@@ -14,6 +14,9 @@ namespace EnemiesSystem.WavesSystem
         public GameObject SpawnPoint => spawnPoint;
         [SerializeField] private float spawnDelay;
         public float SpawnDelay => spawnDelay;
-        
+
+        [SerializeField] private Transform[] destinationPoints;
+        public Transform[] DestinationPoints => destinationPoints;
+
     }
 }
