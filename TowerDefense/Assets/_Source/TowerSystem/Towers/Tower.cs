@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEditor;
 using UnityEngine.AI;
 
@@ -11,6 +12,8 @@ public class Tower : MonoBehaviour
     [SerializeField] private Transform towerRotationPoint;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
+    [SerializeField] private GameObject UpgradeUI;
+    [SerializeField] private Button upgradeButton;
 
     [Header("Attribute")]
     [SerializeField] private float attackRange = 5f;
@@ -18,10 +21,6 @@ public class Tower : MonoBehaviour
     [SerializeField] private float fireRate = 1f;
     [SerializeField] private float damage = 5f;
     [SerializeField] private bool isMagic = false;
-    
-
-
-
 
 
     private Transform target;
@@ -79,6 +78,14 @@ public class Tower : MonoBehaviour
 
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         towerRotationPoint.rotation = Quaternion.RotateTowards(towerRotationPoint.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
+    public void OpenUpgradeUI()
+    {
+        UpgradeUI.SetActive(true);
+    }
+    public void CloseUpgrade()
+    {
+        UpgradeUI.SetActive(false);
     }
 
     private void OnDrawGizmosSelected()
