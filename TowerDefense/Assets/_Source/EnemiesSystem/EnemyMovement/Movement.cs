@@ -10,7 +10,7 @@ namespace EnemiesSystem.EnemyMovement
     
     public class Movement
     {
-         private Transform[] _points;
+        private Transform[] _points;
         private Enemy _enemy;
         private Sequence _mySequence;
         private int _point;
@@ -35,6 +35,7 @@ namespace EnemiesSystem.EnemyMovement
               
 
             }
+
 
 
         }

@@ -31,8 +31,8 @@ public class Bullet : MonoBehaviour
     }
     private void  OnCollisionEnter2D(Collision2D other)
     {
-        EnemyMovement enemy = other.collider.GetComponent<EnemyMovement>();
-       // Debug.Log("dmg sent");
+        Enemy enemy = other.collider.GetComponent<Enemy>();
+        Debug.Log(target.name);
         if (enemy != null)
         {
             enemy.DamgeRecieved(dmg,isMagic);

@@ -11,6 +11,7 @@ public class Plot : MonoBehaviour
     public GameObject towerObj;
     public Tower tower;
     private Color startColor;
+    public float GoldCount { get; set; }
     private void Start()
     {
         startColor = sprite.color;

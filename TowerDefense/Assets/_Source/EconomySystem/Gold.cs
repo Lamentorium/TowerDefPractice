@@ -4,16 +4,28 @@ namespace EconomySystem
 {
     public class Gold
     {
-       
+
         public static Action<float> AddAction;
         public static float GoldCount { get; private set; }
-      
-   
 
+
+       
         public static void AddGold(float newGold)
         {
-            GoldCount+=newGold;
+            GoldCount += newGold;
             AddAction?.Invoke(GoldCount);
+        }
+        public bool SpendCurrency(int amount)
+        {
+            if (amount <= GoldCount)
+            {
+                GoldCount -= amount;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

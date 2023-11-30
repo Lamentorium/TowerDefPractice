@@ -61,17 +61,17 @@ public class EnemyMovement : MonoBehaviour
         if (isMagic == true)
         {
             Debug.Log("Magic resisted");
-            Health -= dmg * MRes;
+            Health -= dmg - (dmg * MRes);
         }
         else
         {
             Debug.Log("Physical resisted");
-            Health -= dmg * PhRes;
+            Health -= dmg - (dmg * PhRes);
         }
 
         if (Health <= 0)
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
 
     }

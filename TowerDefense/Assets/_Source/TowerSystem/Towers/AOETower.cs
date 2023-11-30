@@ -2,15 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
 using UnityEngine.AI;
 
 public class AOETower : MonoBehaviour
 {
-   [Header("References")]
+    [Header("References")]
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private Transform towerRotationPoint;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firingPoint;
+    [SerializeField] private GameObject UpgradeUI;
+    [SerializeField] private Button upgradeButton;
+
+    [SerializeField] private AudioSource attackSound;
 
     [Header("Attribute")]
     [SerializeField] private float attackRange = 5f;
@@ -18,23 +23,29 @@ public class AOETower : MonoBehaviour
     [SerializeField] private float fireRate = 1f;
     [SerializeField] private float damage = 5f;
     [SerializeField] private bool isMagic = false;
-
-
-
+    [SerializeField] private float upgradeCost1 = 150;
+    [SerializeField] private float upgradeCost2 = 200;
+    [Header("Upgraded Stats")]
+    [SerializeField] private float fireRate2 = 1.5f;
+    [SerializeField] private float damage2 = 20f;
+    [SerializeField] private float fireRate3 = 2f;
+    [SerializeField] private float damage3 = 25f;
 
 
     private Transform target;
     private float timeUntilFire;
+    private int level = 1;
 
     private void Update()
     {
-        if (target == null)
+        if (!target)
         {
             FindTarget();
             return;
         }
 
         RotateTowardsTarget();
+
         if (!CheckTargetIsInRange())
         {
             target = null;
@@ -52,6 +63,7 @@ public class AOETower : MonoBehaviour
 
     private void Shoot()
     {
+        attackSound.Play();
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         AOEBullet bulletScript = bulletObj.GetComponent<AOEBullet>();
         bulletScript.SetTarget(target);
@@ -78,6 +90,29 @@ public class AOETower : MonoBehaviour
 
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         towerRotationPoint.rotation = Quaternion.RotateTowards(towerRotationPoint.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
+    public void OpenUpgradeUI()
+    {
+        UpgradeUI.SetActive(true);
+    }
+    public void CloseUpgrade()
+    {
+        UpgradeUI.SetActive(false);
+    }
+    public void UpgradeTurret()
+    {
+        if (LevelManager.main.SpendCurrency(upgradeCost1) && level == 1)
+        {
+            level++;
+            damage = damage2;
+            fireRate = fireRate2;
+        }
+        else if (LevelManager.main.SpendCurrency(upgradeCost2) && level == 2)
+        {
+            level++;
+            damage = damage3;
+            fireRate = fireRate3;
+        }
     }
 
     private void OnDrawGizmosSelected()

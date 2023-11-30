@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using EconomySystem;
 using EnemiesSystem.WavesSystem;
 using UnityEngine;
@@ -10,39 +11,75 @@ namespace EnemiesSystem.Data
     public class Enemy : MonoBehaviour
     {
         private EnemyDataSO _enemyData;
-         public float Health { get; set; }
-         public float MaxHealth { get; set; }
-         public float MagicArmor { get; set; }
-         public float PhysicArmor { get; set; }
-         public float Speed { get; set; }
-         
-         public float GoldCount { get; set; }
-         public Action TakeDamage;
-         
-         public void Init(EnemyDataSO enemyData)
+        public float Health { get; set; }
+        public float MaxHealth { get; set; }
+        public float MagicArmor { get; set; }
+        public float PhysicArmor { get; set; }
+        public float Damage { get; set; }
+        public float Speed { get; set; }
+        public float baseSpeed;
+
+        public float GoldCount { get; set; }
+        public Action TakeDamage;
+
+        public void Init(EnemyDataSO enemyData)
         {
             _enemyData = enemyData;
-            if(TryGetComponent(out SpriteRenderer enemySprite))
+            if (TryGetComponent(out SpriteRenderer enemySprite))
                 enemySprite.sprite = _enemyData.Sprite;
             Health = enemyData.Health;
             MaxHealth = Health;
             MagicArmor = enemyData.MagicArmor;
             PhysicArmor = enemyData.PhysicArmor;
             Speed = enemyData.Speed;
+            baseSpeed = enemyData.Speed;
             GoldCount = enemyData.Gold;
         }
 
-         public void DamgeRecieved(int dmg)
-         {
+        public void Slowed(float slow, float slowtime)
+        {
+            Speed = baseSpeed * slow;
+
+            StartCoroutine(ResetSpeed(slowtime));
+        }
+        private IEnumerator ResetSpeed(float slowtime)
+        {
+            yield return new WaitForSeconds(slowtime);
+            Speed = baseSpeed;
+
+        }
+        public void DamgeRecieved(float dmg, bool isMagic)
+        {
             Debug.Log("dmg taken");
-             Health -= dmg;
-             TakeDamage?.Invoke();
-             if (Health <= 0)
-             {
-                 Gold.AddGold(GoldCount);
-                 gameObject.SetActive(false);
-             }
-             
-         }
+            if (isMagic == true)
+            {
+                Debug.Log("Magic resisted");
+                Health -= dmg - (dmg * MagicArmor);
+            }
+            else
+            {
+                Debug.Log("Physical resisted");
+                Health -= dmg - (dmg * PhysicArmor);
+                Debug.Log("Physical resisted");
+            }
+            TakeDamage?.Invoke();
+            if (Health <= 0)
+            {
+                //Gold.AddGold(GoldCount);
+                LevelManager.main.IncreaseCurrency(GoldCount);
+                Destroy(gameObject);
+            }
+
+        }
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            BaseHealth attackedbase = other.collider.GetComponent<BaseHealth>();
+            if (attackedbase != null)
+            {
+                attackedbase.TakeDamage(Damage);
+                Destroy(gameObject);
+            }
+            
+        }
     }
 }

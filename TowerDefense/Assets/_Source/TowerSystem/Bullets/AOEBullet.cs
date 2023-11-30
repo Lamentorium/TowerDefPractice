@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.AI;
+using EnemiesSystem.Data;
 
 public class AOEBullet : MonoBehaviour
 {
@@ -38,8 +39,9 @@ public class AOEBullet : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        EnemyMovement enemy = other.collider.GetComponent<EnemyMovement>();
+        Enemy enemy = other.collider.GetComponent<Enemy>();
         {
+            Debug.Log(target.name);
             if (enemy != null)
             {
                 rb.velocity =  Vector2.zero;
@@ -52,7 +54,7 @@ public class AOEBullet : MonoBehaviour
                 foreach (var item in enemies)
                 {
                     Debug.Log(123);
-                    item.transform.GetComponent<EnemyMovement>().DamgeRecieved(dmg, isMagic);
+                    item.transform.GetComponent<Enemy>().DamgeRecieved(dmg, isMagic);
                 }
             }
 

@@ -58,7 +58,7 @@ namespace EnemiesSystem.WavesSystem
             {
                     _activeEnemies = null;
                     _enemiesCount = waves[_currentWaveIndex].EnemySettings.Length;
-                    Debug.Log("next");
+                    //Debug.Log("next");
                     yield return new WaitForSeconds(delayBetweenWaves);
                     EnemiesInWave = 0;
                     StartCoroutine(EnemiesSpawn());
@@ -84,7 +84,7 @@ namespace EnemiesSystem.WavesSystem
                     EnemiesInWave++;
                     
                     _activeEnemies.Add(enemyInstance);
-                    Debug.Log(EnemiesInWave);
+                   // Debug.Log(EnemiesInWave);
                 }
 
                 _currentWaveIndex++;

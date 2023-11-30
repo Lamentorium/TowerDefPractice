@@ -5,8 +5,8 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager main;
-    
-    public int currency;
+
+    public float currency;
 
 
     private void Awake()
@@ -15,14 +15,21 @@ public class LevelManager : MonoBehaviour
     }
     private void Start()
     {
-        currency = 100;
+        currency = 200;
     }
-    public bool SpendCurrency(int amount){
-        if(amount <=currency){
-            currency-= amount;
+    public void IncreaseCurrency(float amount)
+    {
+        currency += amount;
+    }
+    public bool SpendCurrency(float amount)
+    {
+        if (amount <= currency)
+        {
+            currency -= amount;
             return true;
         }
-        else{
+        else
+        {
             Debug.Log("denied");
             return false;
         }
