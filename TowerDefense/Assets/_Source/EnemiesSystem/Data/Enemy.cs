@@ -15,6 +15,8 @@ namespace EnemiesSystem.Data
          public float MagicArmor { get; set; }
          public float PhysicArmor { get; set; }
          public float Speed { get; set; }
+         
+         public float GoldCount { get; set; }
          public Action TakeDamage;
          
          public void Init(EnemyDataSO enemyData)
@@ -27,6 +29,7 @@ namespace EnemiesSystem.Data
             MagicArmor = enemyData.MagicArmor;
             PhysicArmor = enemyData.PhysicArmor;
             Speed = enemyData.Speed;
+            GoldCount = enemyData.Gold;
         }
 
          public void DamgeRecieved(int dmg)
@@ -36,7 +39,7 @@ namespace EnemiesSystem.Data
              TakeDamage?.Invoke();
              if (Health <= 0)
              {
-                 Gold.AddGold();
+                 Gold.AddGold(GoldCount);
                  gameObject.SetActive(false);
              }
              
