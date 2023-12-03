@@ -1213,9 +1213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142c22f503ae6cd46bd1de6626f6e7e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  text: {fileID: 1901641495}
-  gameOver: {fileID: 1483971736}
+  <Health>k__BackingField: 100
 --- !u!1001 &533162870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1290,6 +1288,7 @@ GameObject:
   - component: {fileID: 598488088}
   - component: {fileID: 598488087}
   - component: {fileID: 598488086}
+  - component: {fileID: 598488090}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -1381,6 +1380,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &598488090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598488085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e70a84980ceb81c4e9bb2fcfb07f7b75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1901641495}
+  gameOver: {fileID: 1483971736}
 --- !u!1001 &635949178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4326,9 +4339,17 @@ PrefabInstance:
       value: Bootstrapper
       objectReference: {fileID: 0}
     - target: {fileID: 2452010351439750695, guid: 0086bd787e4621b4aab7fff87e515bf6, type: 3}
+      propertyPath: baseHealth
+      value: 
+      objectReference: {fileID: 513754728}
+    - target: {fileID: 2452010351439750695, guid: 0086bd787e4621b4aab7fff87e515bf6, type: 3}
       propertyPath: wavesSpawner
       value: 
       objectReference: {fileID: 1924778036}
+    - target: {fileID: 2452010351439750695, guid: 0086bd787e4621b4aab7fff87e515bf6, type: 3}
+      propertyPath: baseHealthView
+      value: 
+      objectReference: {fileID: 598488090}
     - target: {fileID: 2452010351439750696, guid: 0086bd787e4621b4aab7fff87e515bf6, type: 3}
       propertyPath: m_RootOrder
       value: 8

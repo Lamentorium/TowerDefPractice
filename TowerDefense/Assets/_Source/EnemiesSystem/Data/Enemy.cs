@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using BaseSys;
 using EconomySystem;
 using EnemiesSystem.WavesSystem;
 using UnityEngine;
@@ -34,6 +35,7 @@ namespace EnemiesSystem.Data
             Speed = enemyData.Speed;
             baseSpeed = enemyData.Speed;
             GoldCount = enemyData.Gold;
+            Damage = enemyData.Damage;
         }
 
         public void Slowed(float slow, float slowtime)
@@ -67,18 +69,25 @@ namespace EnemiesSystem.Data
             {
                 //Gold.AddGold(GoldCount);
                 LevelManager.main.IncreaseCurrency(GoldCount);
-                Destroy(gameObject);
+                gameObject.SetActive(false);
+                //Destroy(gameObject);
             }
 
         }
         private void OnCollisionEnter2D(Collision2D other)
         {
-            BaseHealth attackedbase = other.collider.GetComponent<BaseHealth>();
-            if (attackedbase != null)
+            //BaseHealth attackedbase = other.collider.GetComponent<BaseHealth>();
+            //GetComponent тяжелая операция, лучше никогда не использовать, TryGetComponent лучше
+
+            if (other.gameObject.TryGetComponent(out BaseHealth attackedbase))
             {
-                attackedbase.TakeDamage(Damage);
-                Destroy(gameObject);
+                Debug.Log("attack base");
+                attackedbase.TakeDamage(Damage); 
+                //Destroy(gameObject);
+                gameObject.SetActive(false);
+                
             }
+            
             
         }
     }

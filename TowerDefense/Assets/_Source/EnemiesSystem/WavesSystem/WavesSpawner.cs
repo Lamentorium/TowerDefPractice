@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using EnemiesSystem.Data;
 using EnemiesSystem.EnemyMovement;
 using UnityEditor;
 using UnityEngine;
@@ -79,11 +80,16 @@ namespace EnemiesSystem.WavesSystem
                     var enemy = enemyPool.Enemies[enemyInstance];
                     enemy.Init(waves[_currentWaveIndex].EnemySettings[i].EnemyData);
                     enemyInstance.transform.position = waves[_currentWaveIndex].EnemySettings[i].SpawnPoint.transform.position;
-                    var enemyMove = new Movement(waves[_currentWaveIndex].EnemySettings[i].DestinationPoints);
-                    enemyMove.Move(enemy);
+                    //var enemyMove = new Movement(waves[_currentWaveIndex].EnemySettings[i].DestinationPoints);
+                    //enemyMove.Move(enemy);
                     EnemiesInWave++;
-                    
-                    _activeEnemies.Add(enemyInstance);
+                    if (enemyInstance.TryGetComponent(out Movement enemyMove))
+                    {
+                        enemyMove.enabled = true;
+                        enemyMove.Init(waves[_currentWaveIndex].EnemySettings[i].DestinationPoints, waves[_currentWaveIndex].EnemySettings[i].SpawnPoint.transform );
+                        _activeEnemies.Add(enemyInstance);
+                        
+                    }
                    // Debug.Log(EnemiesInWave);
                 }
 
