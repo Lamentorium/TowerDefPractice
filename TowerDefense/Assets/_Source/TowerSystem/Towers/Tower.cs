@@ -79,7 +79,14 @@ public class Tower : MonoBehaviour
 
         if (hits.Length > 0)
         {
-            target = hits[0].transform;
+            for (int i = 0; i < hits.Length; ++i)
+            {
+                if (hits[i].transform.gameObject.activeSelf == true)
+                {
+                    target = hits[i].transform;
+                }
+            }
+
         }
     }
     private bool CheckTargetIsInRange()
