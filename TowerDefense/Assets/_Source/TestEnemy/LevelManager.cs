@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] float startingGold;
     public static LevelManager main;
 
     public float currency;
@@ -15,7 +16,7 @@ public class LevelManager : MonoBehaviour
     }
     private void Start()
     {
-        currency = 200;
+        currency = startingGold;
     }
     public void IncreaseCurrency(float amount)
     {
