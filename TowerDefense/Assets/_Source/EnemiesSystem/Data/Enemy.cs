@@ -12,7 +12,9 @@ namespace EnemiesSystem.Data
     public class Enemy : MonoBehaviour
     {
         private EnemyDataSO _enemyData;
+        public Action OnHit;
         public float Health { get; set; }
+        
         public float MaxHealth { get; set; }
         public float MagicArmor { get; set; }
         public float PhysicArmor { get; set; }
@@ -64,7 +66,9 @@ namespace EnemiesSystem.Data
                 Health -= dmg - (dmg * PhysicArmor);
                 Debug.Log("Physical resisted");
             }
+            Debug.Log("Health: " + Health);
             TakeDamage?.Invoke();
+            OnHit?.Invoke();
             if (Health <= 0)
             {
                 //Gold.AddGold(GoldCount);

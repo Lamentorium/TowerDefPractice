@@ -18,16 +18,13 @@ namespace EnemiesSystem
         public Dictionary<GameObject, Enemy> Enemies { get; private set; }
         private Queue<GameObject> _enemies;
         
-        public void InitPool()
+        public void InitPool(GameObject boss = null)
         {
-           
-            
             _enemies = new Queue<GameObject>();
             Enemies = new Dictionary<GameObject, Enemy>();
-            for (int i = 0; i < MaximumWavePoolSize; i++)
+            if (boss != null)
             {
-                
-                GameObject enemyInstance = GameObject.Instantiate(enemyPrefab, parent.transform);
+                GameObject enemyInstance = GameObject.Instantiate(boss, parent.transform);
                 if (enemyInstance.TryGetComponent(out Enemy enemyScript))
                 {
                     
@@ -35,6 +32,24 @@ namespace EnemiesSystem
                 }
                 ReturnToPool(enemyInstance);
             }
+            else
+            {
+               
+                for (int i = 0; i < MaximumWavePoolSize; i++)
+                {
+                    
+                    GameObject enemyInstance = GameObject.Instantiate(enemyPrefab, parent.transform);
+                    if (enemyInstance.TryGetComponent(out Enemy enemyScript))
+                    {
+                        
+                        Enemies.Add(enemyInstance, enemyScript );
+                    }
+                    ReturnToPool(enemyInstance);
+                }
+                
+            }
+           
+            
         }
 
         public bool TryGetFromPool(out GameObject enemyInstance)

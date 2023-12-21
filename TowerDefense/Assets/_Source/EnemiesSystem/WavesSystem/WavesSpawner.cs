@@ -15,6 +15,8 @@ namespace EnemiesSystem.WavesSystem
         [SerializeField] private Waves[] waves;
         [SerializeField] private UnitsPool enemyPool;
         [SerializeField] private float delayBetweenWaves;
+        [SerializeField] private bool bossInWave;
+        [SerializeField] private GameObject bossPrefab;
         [SerializeField] private GameObject winScreen;
         private List<GameObject> _activeEnemies;
         private int _enemiesCount;
@@ -47,15 +49,22 @@ namespace EnemiesSystem.WavesSystem
                 StartCoroutine(LaunchNextWave());
             }
 
+           
 
         }
 
         private IEnumerator LaunchNextWave()
         {
+
             foreach (var enemy in _activeEnemies)
             {
                 enemyPool.ReturnToPool(enemy);
 
+            }
+            if (_currentWaveIndex == waves.Length - 1 && bossInWave)
+            {
+                enemyPool.InitPool(bossPrefab);
+                
             }
             if (_currentWaveIndex < waves.Length)
             {
@@ -64,6 +73,7 @@ namespace EnemiesSystem.WavesSystem
                 //Debug.Log("next");
                 yield return new WaitForSeconds(delayBetweenWaves);
                 EnemiesInWave = 0;
+               
                 StartCoroutine(EnemiesSpawn());
 
             }
@@ -75,6 +85,7 @@ namespace EnemiesSystem.WavesSystem
         }
         private IEnumerator EnemiesSpawn()
         {
+           
 
             _activeEnemies = new List<GameObject>();
             for (int i = 0; i < _enemiesCount; i++)
