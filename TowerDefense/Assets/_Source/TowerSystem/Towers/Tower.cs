@@ -17,10 +17,10 @@ public class Tower : MonoBehaviour
     [SerializeField] private AudioSource attackSound;
 
     [Header("Attribute")]
-    [SerializeField] private float attackRange = 5f;
+    [SerializeField] public float attackRange = 5f;
     [SerializeField] private float rotationSpeed = 5f;
-    [SerializeField] private float fireRate = 1f;
-    [SerializeField] private float damage = 15f;
+    [SerializeField] public float fireRate = 1f;
+    [SerializeField] public float damage = 15f;
     [SerializeField] private bool isMagic = false;
     [SerializeField] private float upgradeCost1 = 150;
     [SerializeField] private float upgradeCost2 = 200;
@@ -36,6 +36,10 @@ public class Tower : MonoBehaviour
     private int level = 1;
 
 
+    void Awake()
+    {
+        transform.Find("PageBuffSmall").gameObject.SetActive(true);
+    }
     private void Update()
     {
         if (!target)
@@ -115,12 +119,14 @@ public class Tower : MonoBehaviour
             level++;
             damage = damage2;
             fireRate = fireRate2;
+            transform.Find("PageBuffMedium").gameObject.SetActive(true);
         }
         else if (LevelManager.main.SpendCurrency(upgradeCost2) && level == 2)
         {
             level++;
             damage = damage3;
             fireRate = fireRate3;
+            
         }
 
     }

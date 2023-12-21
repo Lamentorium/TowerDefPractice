@@ -41,6 +41,7 @@ public class Plot : MonoBehaviour
         if (LevelManager.main.SpendCurrency(towerToBuild.cost))
         {
             towerObj = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
+            towerObj.SetActive(true);
             tower = towerObj.GetComponent<Tower>();
         }
 

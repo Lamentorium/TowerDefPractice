@@ -18,10 +18,10 @@ public class AOETower : MonoBehaviour
     [SerializeField] private AudioSource attackSound;
 
     [Header("Attribute")]
-    [SerializeField] private float attackRange = 5f;
+    [SerializeField] public float attackRange = 5f;
     [SerializeField] private float rotationSpeed = 5f;
-    [SerializeField] private float fireRate = 1f;
-    [SerializeField] private float damage = 5f;
+    [SerializeField] public float fireRate = 1f;
+    [SerializeField] public float damage = 5f;
     [SerializeField] private bool isMagic = false;
     [SerializeField] private float upgradeCost1 = 150;
     [SerializeField] private float upgradeCost2 = 200;

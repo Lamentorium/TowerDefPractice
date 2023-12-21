@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 5181805614889186160}
   - component: {fileID: 5181805614889186163}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

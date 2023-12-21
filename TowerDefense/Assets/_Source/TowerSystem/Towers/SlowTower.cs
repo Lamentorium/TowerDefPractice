@@ -15,9 +15,9 @@ public class SlowTower : MonoBehaviour
     [SerializeField] private Button upgradeButton;
     [SerializeField] private AudioSource attackSound;
     [Header("Attribute")]
-    [SerializeField] private float attackRange = 5f;
-    [SerializeField] private float fireRate = 4f;
-    [SerializeField] private float damage = 5f;
+    [SerializeField] public float attackRange = 5f;
+    [SerializeField] public float fireRate = 4f;
+    [SerializeField] public float damage = 5f;
     [SerializeField] private float slow = 0.5f;
     [SerializeField] private float slowTime = 1f;
     [SerializeField] private bool isMagic = false;

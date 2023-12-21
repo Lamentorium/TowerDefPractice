@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Small
+  - Medium
+  - Occupied
+  - InSlot
   layers:
   - Default
   - TransparentFX
@@ -14,7 +18,7 @@ TagManager:
   - Enemy
   - Bullet
   - TowerUI
-  - 
+  - Dragging
   - 
   - 
   - 

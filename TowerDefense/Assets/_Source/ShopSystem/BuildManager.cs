@@ -10,10 +10,15 @@ public class BuildManager : MonoBehaviour
     //[SerializeField] private GameObject[] towerPrefabs; 
     [SerializeField] private Shop[] towers;
 
+
     private int selectedTower = 0;
     private void Awake()
     {
         main = this;
+        for (int i = 0; i < TowerSaver.instance.towersArray.Length; i++)
+        {
+            towers[i].prefab = TowerSaver.instance.towersArray[i];
+        }
     }
 
     public Shop GetSelectedTower()

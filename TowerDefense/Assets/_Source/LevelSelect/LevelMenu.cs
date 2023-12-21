@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelMenu : MonoBehaviour
 {
-    [SerializeField] private string level = "FirstLevel";
+    [SerializeField] private string level = "TowerSelect";
     public void OnClick()
     {
         SceneManager.LoadScene(level);
