@@ -36,10 +36,6 @@ public class Tower : MonoBehaviour
     private int level = 1;
 
 
-    void Awake()
-    {
-        transform.Find("PageBuffSmall").gameObject.SetActive(true);
-    }
     private void Update()
     {
         if (!target)
@@ -119,21 +115,22 @@ public class Tower : MonoBehaviour
             level++;
             damage = damage2;
             fireRate = fireRate2;
-            transform.Find("PageBuffMedium").gameObject.SetActive(true);
+            transform.Find("PageBuffSmall").gameObject.SetActive(true);
+            
         }
         else if (LevelManager.main.SpendCurrency(upgradeCost2) && level == 2)
         {
             level++;
             damage = damage3;
             fireRate = fireRate3;
-            
+            transform.Find("PageBuffMedium").gameObject.SetActive(true);
         }
 
     }
 
-    private void OnDrawGizmosSelected()
+    /*private void OnDrawGizmosSelected()
     {
         Handles.color = Color.red;
         Handles.DrawWireDisc(transform.position, transform.forward, attackRange);
-    }
+    }*/
 }

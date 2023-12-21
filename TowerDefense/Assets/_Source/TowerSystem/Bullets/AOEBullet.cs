@@ -33,6 +33,10 @@ public class AOEBullet : MonoBehaviour
         {
             return;
         }
+        if (target.gameObject.activeSelf == false)
+        {
+            Destroy(gameObject);
+        }
         Vector2 direction = (target.position - transform.position).normalized;
 
         rb.velocity = direction * bulletSpeed;//probably better to use transform translate
@@ -44,7 +48,7 @@ public class AOEBullet : MonoBehaviour
             Debug.Log(target.name);
             if (enemy != null)
             {
-                rb.velocity =  Vector2.zero;
+                rb.velocity = Vector2.zero;
                 projectileCollider.enabled = false;
                 projectileSprite.enabled = false;
                 explosion.SetActive(true);
@@ -61,7 +65,7 @@ public class AOEBullet : MonoBehaviour
         }
 
     }
-    
+
     private IEnumerator AttackEnd()
     {
         yield return new WaitForSeconds(0.3f);

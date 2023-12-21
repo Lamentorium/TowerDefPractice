@@ -92,6 +92,7 @@ public class Draggable : MonoBehaviour
                 gameObject.tag = INSLOT;
                 slotTrigger.isOccupied = true;
                 slotTrigger.Occupied();
+                pageBuff.transform.parent = other.transform;
                 
             }
         }

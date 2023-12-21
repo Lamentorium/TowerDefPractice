@@ -121,9 +121,9 @@ public class AOETower : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+    /*private void OnDrawGizmosSelected()
     {
         Handles.color = Color.red;
         Handles.DrawWireDisc(transform.position, transform.forward, attackRange);
-    }
+    }*/
 }

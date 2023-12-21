@@ -95,10 +95,10 @@ public class SlowTower : MonoBehaviour
             slowTime = slowTime3;
         }
     }
-    private void OnDrawGizmosSelected()
+    /*private void OnDrawGizmosSelected()
     {
         Handles.color = Color.blue;
         Handles.DrawWireDisc(transform.position, transform.forward, attackRange);
-    }
+    }*/
 }
 

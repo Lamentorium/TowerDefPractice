@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float bulletSpeed = 5f;
-    public  float dmg = 5f;
+    public float dmg = 5f;
     public bool isMagic = false;
 
     private Transform target;
@@ -21,21 +21,26 @@ public class Bullet : MonoBehaviour
     }
     private void FixedUpdate()
     {
+
         if (!target)
         {
             return;
+        }
+        if (target.gameObject.activeSelf == false)
+        {
+            Destroy(gameObject);
         }
         Vector2 direction = (target.position - transform.position).normalized;
 
         rb.velocity = direction * bulletSpeed;//probably better to use transform translate
     }
-    private void  OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         Enemy enemy = other.collider.GetComponent<Enemy>();
         Debug.Log(target.name);
         if (enemy != null)
         {
-            enemy.DamgeRecieved(dmg,isMagic);
+            enemy.DamgeRecieved(dmg, isMagic);
         }
         Destroy(gameObject);
     }

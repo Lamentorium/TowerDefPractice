@@ -151,7 +151,7 @@ MonoBehaviour:
   explosion: {fileID: 7878868932367361214}
   projectileSprite: {fileID: 5021638986999118129}
   projectileCollider: {fileID: 4856955947446624824}
-  bulletSpeed: 5
+  bulletSpeed: 15
   dmg: 5
   isMagic: 0
   aoeRange: 0.5
