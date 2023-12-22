@@ -7,10 +7,9 @@ public class TutorialProgression : MonoBehaviour
     [SerializeField] GameObject[] tutorials;
     [SerializeField] GameObject[] plots;
     [SerializeField] GameObject tutorialBg1;
-    [SerializeField] GameObject baseOutline;
     [SerializeField] GameObject baseObject;
     [SerializeField] GameObject tutorialPlot;
-    [SerializeField] GameObject bootStrap;
+    [SerializeField] GameObject waves;
     public bool canContinue = false;
     private bool tutor4pass = false;
     private MusicManager music;
@@ -26,9 +25,9 @@ public class TutorialProgression : MonoBehaviour
         {
             if (tutorialStage == 1)
             {
-                baseOutline.SetActive(false);
+                //baseOutline.SetActive(false);
                 baseObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
-                baseOutline.GetComponent<SpriteRenderer>().sortingOrder = 1;
+                //baseOutline.GetComponent<SpriteRenderer>().sortingOrder = 1;
             }
             if (tutorialStage == 2)
             {
@@ -41,9 +40,9 @@ public class TutorialProgression : MonoBehaviour
         }
         if (tutorialStage == 1)
         {
-            baseOutline.SetActive(true);
+            //baseOutline.SetActive(true);
             baseObject.GetComponent<SpriteRenderer>().sortingOrder = 4;
-            baseOutline.GetComponent<SpriteRenderer>().sortingOrder = 3;
+           // baseOutline.GetComponent<SpriteRenderer>().sortingOrder = 3;
         }
         if (tutorialStage == 2)
         {
@@ -79,7 +78,7 @@ public class TutorialProgression : MonoBehaviour
             }
             tutorials[4].SetActive(false);
             tutorialBg1.SetActive(false);
-            bootStrap.SetActive(true);
+            waves.SetActive(true);
             Destroy(this);
 
         }

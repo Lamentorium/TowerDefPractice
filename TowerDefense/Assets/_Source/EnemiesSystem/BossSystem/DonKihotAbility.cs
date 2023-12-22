@@ -18,6 +18,7 @@ namespace EnemiesSystem.BossSystem
         private List<Transform> _towers;
         private bool _towersDisabled = false;
         private int _clicks = 0;
+        private MusicManager music;
         private void OnEnable()
         {
             if (TryGetComponent(out Enemy enemyScript))
@@ -28,6 +29,8 @@ namespace EnemiesSystem.BossSystem
                 _towersDisabled = false;
                 _towers = new();
             }
+            music = FindObjectOfType<MusicManager>();
+            music.Level1Boss();
         }
 
         private void Update()
@@ -48,14 +51,14 @@ namespace EnemiesSystem.BossSystem
                     OnAbility -= CheckDmgOn2000;
                     OnAbility += CheckDmgOn1000;
                 }
-               
+
             }
 
             if (_enemyScript.Health <= 1000)
             {
                 if (OnAbility == CheckDmgOn1000)
                 {
-                   
+
                     OnAbility?.Invoke();
                     OnAbility -= CheckDmgOn1000;
                 }
@@ -63,18 +66,18 @@ namespace EnemiesSystem.BossSystem
         }
         public void CheckDmgOn2000()
         {
-            
-                StartCoroutine(AbilityActivator());
-            
 
-            
+            StartCoroutine(AbilityActivator());
+
+
+
         }
         public void CheckDmgOn1000()
         {
-             
-                
-                StartCoroutine(AbilityActivator());
-            
+
+
+            StartCoroutine(AbilityActivator());
+
         }
 
         public IEnumerator AbilityActivator()
@@ -86,9 +89,9 @@ namespace EnemiesSystem.BossSystem
             _towersDisabled = true;
             yield return new WaitForSeconds(timeOfStop);
             _enemyScript.Speed = temp1;
-           
-           
-            
+
+
+
         }
 
         private void SwitchOffTowers()
@@ -105,27 +108,27 @@ namespace EnemiesSystem.BossSystem
                 Debug.Log("Found hit");
                 for (int i = 0; i < hits.Length; ++i)
                 {
-                    if(hits[i].transform.gameObject.TryGetComponent(out AOETower aoeTower))
-                    { 
+                    if (hits[i].transform.gameObject.TryGetComponent(out AOETower aoeTower))
+                    {
                         Debug.Log("Found");
                         aoeTower.enabled = false;
                         _towers.Add(hits[i].transform);
                     }
-                    if(hits[i].transform.gameObject.TryGetComponent(out SlowTower slowTower))
-                    { 
+                    if (hits[i].transform.gameObject.TryGetComponent(out SlowTower slowTower))
+                    {
                         Debug.Log("Found");
                         slowTower.enabled = false;
                         _towers.Add(hits[i].transform);
                     }
-                    if(hits[i].transform.gameObject.TryGetComponent(out Tower tower))
-                    { 
+                    if (hits[i].transform.gameObject.TryGetComponent(out Tower tower))
+                    {
                         Debug.Log("Found");
                         tower.enabled = false;
                         _towers.Add(hits[i].transform);
                     }
                     else
                     {
-                        
+
                         Debug.Log("Nothing Found");
                     }
                 }
@@ -152,37 +155,37 @@ namespace EnemiesSystem.BossSystem
 
             for (int i = 0; i < _towers.Count; i++)
             {
-                
+
                 if (_towers[i].gameObject.TryGetComponent(out AOETower aoeTower))
                 {
 
                     aoeTower.enabled = true;
-                   
+
                 }
 
                 if (_towers[i].gameObject.TryGetComponent(out SlowTower slowTower))
                 {
 
                     slowTower.enabled = true;
-                    
+
                 }
 
                 if (_towers[i].gameObject.TryGetComponent(out Tower tower1))
                 {
 
                     tower1.enabled = true;
-                    
+
                 }
             }
-                _towers.Clear();
+            _towers.Clear();
 
             _towersDisabled = false;
             _clicks = 0;
-                
-                
-            }
 
-        
+
+        }
+
+
         /*private void OnDrawGizmosSelected()
         {
             Handles.color = Color.red;

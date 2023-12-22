@@ -60,14 +60,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.4627451}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ab5068a01316ee14081877830caaf375, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -127,6 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eacb9a89b5b8a74c809b1122446699b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerSprite: {fileID: 6854227735410755624}
+  level2: {fileID: 21300000, guid: 9970c4e5a89b796458e66f7376a3a496, type: 3}
+  level3: {fileID: 21300000, guid: a3eb9bbfd9d673649afc2fe7247c47c8, type: 3}
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
@@ -417,7 +420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7420763146034675592
 Transform:
   m_ObjectHideFlags: 0
@@ -558,7 +561,7 @@ SpriteRenderer:
   m_SortingLayerID: -1463098579
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 533d63ac902ddd443b227b15e607cb74, type: 3}
+  m_Sprite: {fileID: 21300000, guid: de6e8cd78420802409c45bdf3d065f69, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -690,7 +693,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4118220138002046146}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5181805614823139971}
+        m_TargetAssemblyTypeName: SlowTower, Assembly-CSharp
+        m_MethodName: UpgradeTurret
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8348056715260988719
 GameObject:
   m_ObjectHideFlags: 0

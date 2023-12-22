@@ -28,7 +28,7 @@ namespace BaseSys
 
         private void UpdateText(float health)
         {
-            text.text = "Base HP: " + health;
+            text.text = " " + health;
             Debug.Log(text.text);
         }
 

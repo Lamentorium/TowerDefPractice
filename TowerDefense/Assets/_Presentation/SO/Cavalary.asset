@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8301d7e5f7539c348a31a5f108df11f5, type: 3}
   m_Name: Cavalary
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: d2d73472ef57e574a94bc69ca6e16e9d, type: 3}
   speed: 4
   damage: 12
   health: 170

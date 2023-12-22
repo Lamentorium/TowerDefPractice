@@ -8,6 +8,9 @@ using UnityEngine.AI;
 public class Tower : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private GameObject towerSprite;
+    [SerializeField] private Sprite level2;
+    [SerializeField] private Sprite level3;
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private Transform towerRotationPoint;
     [SerializeField] private GameObject bulletPrefab;
@@ -115,15 +118,17 @@ public class Tower : MonoBehaviour
             level++;
             damage = damage2;
             fireRate = fireRate2;
+            towerSprite.GetComponent<SpriteRenderer>().sprite = level2;
             transform.Find("PageBuffSmall").gameObject.SetActive(true);
-            
         }
         else if (LevelManager.main.SpendCurrency(upgradeCost2) && level == 2)
         {
             level++;
             damage = damage3;
             fireRate = fireRate3;
+            towerSprite.GetComponent<SpriteRenderer>().sprite = level3;
             transform.Find("PageBuffMedium").gameObject.SetActive(true);
+            
         }
 
     }

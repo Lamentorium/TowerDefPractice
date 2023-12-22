@@ -20,4 +20,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Presentation/Scenes/TowerSelect.unity
     guid: 9d6f030363ddefc44ba972c115496194
+  - enabled: 1
+    path: Assets/_Presentation/Scenes/ThirdLevel.unity
+    guid: 772418d95990ede4ea32d7f0ccc02528
+  - enabled: 1
+    path: Assets/_Presentation/Scenes/FithLevel.unity
+    guid: 46e3a2f6a32801440a92a60e26f20b3a
+  - enabled: 1
+    path: Assets/_Presentation/Scenes/FourthLevel.unity
+    guid: c7df7c9a98b72d745a91208ac2aa46bc
   m_configObjects: {}

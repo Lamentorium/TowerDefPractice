@@ -8,6 +8,9 @@ using UnityEngine.AI;
 public class AOETower : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private GameObject towerSprite;
+    [SerializeField] private Sprite level2;
+    [SerializeField] private Sprite level3;
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private Transform towerRotationPoint;
     [SerializeField] private GameObject bulletPrefab;
@@ -112,12 +115,16 @@ public class AOETower : MonoBehaviour
             level++;
             damage = damage2;
             fireRate = fireRate2;
+            transform.Find("PageBuffSmall").gameObject.SetActive(true);
+            towerSprite.GetComponent<SpriteRenderer>().sprite = level2;
         }
         else if (LevelManager.main.SpendCurrency(upgradeCost2) && level == 2)
         {
             level++;
             damage = damage3;
             fireRate = fireRate3;
+            transform.Find("PageBuffMedium").gameObject.SetActive(true);
+            towerSprite.GetComponent<SpriteRenderer>().sprite = level3;
         }
     }
 

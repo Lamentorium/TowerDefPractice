@@ -10,6 +10,8 @@ public class Plot : MonoBehaviour
     [SerializeField] private Color hoverColor;
     public GameObject towerObj;
     public Tower tower;
+    public AOETower aoeTower;
+    public SlowTower slowTower;
     private Color startColor;
     public float GoldCount { get; set; }
     private void Start()
@@ -32,7 +34,19 @@ public class Plot : MonoBehaviour
         }
         if (towerObj != null)
         {
-            tower.OpenUpgradeUI();
+            if (towerObj.TryGetComponent<AOETower>(out AOETower aoeTower))
+            {
+                aoeTower.OpenUpgradeUI();
+            }
+            else if (towerObj.TryGetComponent<Tower>(out Tower tower))
+            {
+                tower.OpenUpgradeUI();
+            }
+            else if (towerObj.TryGetComponent<SlowTower>(out SlowTower slowTower))
+            {
+                slowTower.OpenUpgradeUI();
+            }
+
             return;
         }
 

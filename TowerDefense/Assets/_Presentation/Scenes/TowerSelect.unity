@@ -1525,7 +1525,7 @@ GameObject:
   - component: {fileID: 257780474}
   - component: {fileID: 257780473}
   m_Layer: 0
-  m_Name: PageBuffMeduim
+  m_Name: PageBuffMedium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3807,7 +3807,7 @@ GameObject:
   - component: {fileID: 1063606036}
   - component: {fileID: 1063606035}
   m_Layer: 0
-  m_Name: PageBuffMeduim
+  m_Name: PageBuffMedium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5531,7 +5531,7 @@ GameObject:
   - component: {fileID: 1508080887}
   - component: {fileID: 1508080886}
   m_Layer: 0
-  m_Name: PageBuffMeduim
+  m_Name: PageBuffMedium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

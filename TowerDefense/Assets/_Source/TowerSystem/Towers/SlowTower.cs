@@ -9,6 +9,9 @@ using EnemiesSystem.Data;
 public class SlowTower : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private GameObject towerSprite;
+    [SerializeField] private Sprite level2;
+    [SerializeField] private Sprite level3;
     [SerializeField] private LayerMask enemyMask;
     [SerializeField] private GameObject attackAnim;
     [SerializeField] private GameObject UpgradeUI;
@@ -85,6 +88,8 @@ public class SlowTower : MonoBehaviour
             fireRate = fireRate2;
             slow = slow2;
             slowTime = slowTime2;
+            transform.Find("PageBuffSmall").gameObject.SetActive(true);
+            towerSprite.GetComponent<SpriteRenderer>().sprite = level2;
         }
         else if (LevelManager.main.SpendCurrency(upgradeCost2) && level == 2)
         {
@@ -93,6 +98,8 @@ public class SlowTower : MonoBehaviour
             fireRate = fireRate3;
             slow = slow3;
             slowTime = slowTime3;
+            transform.Find("PageBuffMedium").gameObject.SetActive(true);
+            towerSprite.GetComponent<SpriteRenderer>().sprite = level3;
         }
     }
     /*private void OnDrawGizmosSelected()

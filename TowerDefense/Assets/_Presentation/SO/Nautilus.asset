@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8301d7e5f7539c348a31a5f108df11f5, type: 3}
   m_Name: Nautilus
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 2bf40cf64e198684b909a7cb0a7447c9, type: 3}
+  sprite: {fileID: 21300000, guid: c5cf9b1d8ce66704d9c064e982c5e206, type: 3}
   speed: 1
   damage: 1
   health: 3500
