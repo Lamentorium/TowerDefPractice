@@ -13,7 +13,13 @@ public class TutorialProgression : MonoBehaviour
     [SerializeField] GameObject bootStrap;
     public bool canContinue = false;
     private bool tutor4pass = false;
+    private MusicManager music;
     private int tutorialStage = 0;
+    private void Start()
+    {
+        music = FindObjectOfType<MusicManager>();
+        music.Level1();
+    }
     private void Update()
     {
         if (Input.GetButtonDown("Fire1") && tutorialStage < 4)

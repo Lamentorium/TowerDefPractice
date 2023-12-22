@@ -43,6 +43,7 @@ public class Plot : MonoBehaviour
             towerObj = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
             towerObj.SetActive(true);
             tower = towerObj.GetComponent<Tower>();
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
 
     }

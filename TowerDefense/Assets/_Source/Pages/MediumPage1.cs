@@ -5,25 +5,25 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Pages/MediumPage1")]
 public class MediumPage1 : PageBase
 {
-    [SerializeField] float FireRateToBuff = 2f;
-    [SerializeField] float DamageToDebuff = 0.4f;
+    [SerializeField] float fireRateToBuff = 2f;
+    [SerializeField] float damageToDebuff = 0.4f;
     
     public override void Apply(GameObject target)
     {
         if (target.TryGetComponent(out Tower tower))
         {
-            tower.fireRate *= FireRateToBuff;
-            tower.damage *= DamageToDebuff;
+            tower.fireRate *= fireRateToBuff;
+            tower.damage *= damageToDebuff;
         }
         else if (target.TryGetComponent(out AOETower aoeTower))
         {
-            aoeTower.fireRate *= FireRateToBuff;
-            aoeTower.damage *= DamageToDebuff;
+            aoeTower.fireRate *= fireRateToBuff;
+            aoeTower.damage *= damageToDebuff;
         }
         else if (target.TryGetComponent(out SlowTower slowTower))
         {
-            slowTower.fireRate *= FireRateToBuff;
-            slowTower.damage *= DamageToDebuff;
+            slowTower.fireRate *= fireRateToBuff;
+            slowTower.damage *= damageToDebuff;
         }
     }
 }

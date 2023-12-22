@@ -8,10 +8,12 @@ namespace TowerMenu
     {
         [SerializeField] private string[] level;
         public TowerSelect[] towerSelect;
+        [SerializeField] AudioSource click;
         public int levelIndex = 0;
 
         public void OnClick()
         {
+            click.Play();
             for (int i = 0; i < towerSelect.Length; i++)
             {
                 towerSelect[i].ChooseTower();

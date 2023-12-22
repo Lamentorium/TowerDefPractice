@@ -9880,6 +9880,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8155090318373466429, guid: 2cbe388a85a5a6e48b5b325fa94d2c5b, type: 3}
+      propertyPath: towers.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155090318373466429, guid: 2cbe388a85a5a6e48b5b325fa94d2c5b, type: 3}
       propertyPath: towers.Array.data[0].cost
       value: 100
       objectReference: {fileID: 0}
@@ -9899,6 +9903,30 @@ PrefabInstance:
       propertyPath: towers.Array.data[3].cost
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 8155090318373466429, guid: 2cbe388a85a5a6e48b5b325fa94d2c5b, type: 3}
+      propertyPath: towers.Array.data[4].cost
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155090318373466429, guid: 2cbe388a85a5a6e48b5b325fa94d2c5b, type: 3}
+      propertyPath: towers.Array.data[4].name
+      value: SlowTpwer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155090318373466429, guid: 2cbe388a85a5a6e48b5b325fa94d2c5b, type: 3}
+      propertyPath: towers.Array.data[5].cost
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155090318373466429, guid: 2cbe388a85a5a6e48b5b325fa94d2c5b, type: 3}
+      propertyPath: towers.Array.data[5].name
+      value: SlowTpwer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155090318373466429, guid: 2cbe388a85a5a6e48b5b325fa94d2c5b, type: 3}
+      propertyPath: towers.Array.data[4].prefab
+      value: 
+      objectReference: {fileID: 5181805614823139972, guid: 89abc0b513f17b840adbb9b68ab8bb31, type: 3}
+    - target: {fileID: 8155090318373466429, guid: 2cbe388a85a5a6e48b5b325fa94d2c5b, type: 3}
+      propertyPath: towers.Array.data[5].prefab
+      value: 
+      objectReference: {fileID: 5181805614823139972, guid: 89abc0b513f17b840adbb9b68ab8bb31, type: 3}
     - target: {fileID: 8155090318373466430, guid: 2cbe388a85a5a6e48b5b325fa94d2c5b, type: 3}
       propertyPath: m_Name
       value: LevelManager
