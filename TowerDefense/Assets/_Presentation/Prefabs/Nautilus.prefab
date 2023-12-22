@@ -193,9 +193,9 @@ GameObject:
   - component: {fileID: 2492790910287165359}
   - component: {fileID: 4513706109584844363}
   - component: {fileID: 2670278735476460368}
-  - component: {fileID: 2537036921951433526}
+  - component: {fileID: 3630199029783154326}
   m_Layer: 6
-  m_Name: Boss
+  m_Name: Nautilus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4204773370712307847}
---- !u!114 &2537036921951433526
+--- !u!114 &3630199029783154326
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -365,14 +365,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 5728683435778261112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 532661744f30a1a41ab90aed20a18271, type: 3}
+  m_Script: {fileID: 11500000, guid: f11ae14e46ac2ec4aa4131e4a9696403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeOfStop: 3
-  towerMask:
-    serializedVersion: 2
-    m_Bits: 8
-  findTowerRange: 8
+  enemyPrefab: {fileID: 4018913879094289135, guid: 7a1b6433a8a837f47afa126d643f5636, type: 3}
+  enemyDataSo: {fileID: 11400000, guid: 896bdeef3d0418549b60b62c49dd748b, type: 2}
+  spawnPoint: {fileID: 3344030655048913359, guid: 04004e1d3d494244aac41ecbe4566e72, type: 3}
+  destinationPoints:
+  - {fileID: 1795938981744964888, guid: 35cfad7d284a4eb409ba55f6b8970684, type: 3}
+  - {fileID: 3524991093785682204, guid: 21ef2b506d8b46144add8d769da1b33b, type: 3}
+  - {fileID: 1150787863422336706, guid: 2cb6b68fe0f59044e9cef52afc540063, type: 3}
+  - {fileID: 8904908798221634207, guid: 1ae9d8d246ded49438d8f12178f53ed9, type: 3}
+  speedMultiplier: 2
+  timeOfExtraSpeed: 2
+  delayBetweenSpawns: 1
 --- !u!1 &9135852536088928298
 GameObject:
   m_ObjectHideFlags: 0

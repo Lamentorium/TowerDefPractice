@@ -8,14 +8,13 @@ using UnityEngine.Serialization;
 
 namespace EnemiesSystem.BossSystem
 {
-    public class BossAbility : MonoBehaviour
+    public class DonKihotAbility : MonoBehaviour, IDonKihotAbility
     {
         [SerializeField] private float timeOfStop;
         [SerializeField] private LayerMask towerMask;
         [SerializeField] private float findTowerRange = 8f;
-        private Transform target;
         private Enemy _enemyScript;
-        private Action OnFuncRemove;
+        public Action OnAbility { get; private set; }
         private List<Transform> _towers;
         private bool _towersDisabled = false;
         private int _clicks = 0;
@@ -25,7 +24,7 @@ namespace EnemiesSystem.BossSystem
             {
                 _enemyScript = enemyScript;
                 _enemyScript.OnHit += CheckDmg;
-                OnFuncRemove = CheckDmgOn2000;
+                OnAbility = CheckDmgOn2000;
                 _towersDisabled = false;
                 _towers = new();
             }
@@ -43,29 +42,29 @@ namespace EnemiesSystem.BossSystem
         {
             if (_enemyScript.Health <= 2000)
             {
-                if (OnFuncRemove == CheckDmgOn2000)
+                if (OnAbility == CheckDmgOn2000)
                 {
-                    OnFuncRemove?.Invoke();
-                    OnFuncRemove -= CheckDmgOn2000;
-                    OnFuncRemove += CheckDmgOn1000;
+                    OnAbility?.Invoke();
+                    OnAbility -= CheckDmgOn2000;
+                    OnAbility += CheckDmgOn1000;
                 }
                
             }
 
             if (_enemyScript.Health <= 1000)
             {
-                if (OnFuncRemove == CheckDmgOn1000)
+                if (OnAbility == CheckDmgOn1000)
                 {
                    
-                    OnFuncRemove?.Invoke();
-                    OnFuncRemove -= CheckDmgOn1000;
+                    OnAbility?.Invoke();
+                    OnAbility -= CheckDmgOn1000;
                 }
             }
         }
         public void CheckDmgOn2000()
         {
             
-                StartCoroutine(StopGettingDamage());
+                StartCoroutine(AbilityActivator());
             
 
             
@@ -74,11 +73,11 @@ namespace EnemiesSystem.BossSystem
         {
              
                 
-                StartCoroutine(StopGettingDamage());
+                StartCoroutine(AbilityActivator());
             
         }
 
-        IEnumerator StopGettingDamage()
+        public IEnumerator AbilityActivator()
         {
             Debug.Log("Ability activated");
             var temp1 = _enemyScript.Speed;

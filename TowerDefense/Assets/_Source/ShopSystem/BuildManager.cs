@@ -15,10 +15,10 @@ public class BuildManager : MonoBehaviour
     private void Awake()
     {
         main = this;
-        for (int i = 0; i < TowerSaver.instance.towersArray.Length; i++)
+        /*for (int i = 0; i < TowerSaver.instance.towersArray.Length; i++)
         {
             towers[i].prefab = TowerSaver.instance.towersArray[i];
-        }
+        }*/
     }
 
     public Shop GetSelectedTower()
